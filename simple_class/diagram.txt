@@ -1,0 +1,28 @@
+@startuml
+class Date {
+  - year: int
+  - month: int
+  - day: int
+  - date: datetime
+  __init__(year: int, month: int, day: int)
+  __str__(): str
+  __add__(days: int): Date
+  __sub__(days: int): Date
+  __eq__(other: Date): bool
+  __lt__(other: Date): bool
+  + from_string(date_string: str): Date
+  + save(filename: str): void
+  + load(filename: str): void
+}
+
+class datetime {
+
+  + year: int
+  + month: int
+  + day: int
+  __init__(year: int, month: int, day: int)
+}
+
+Date --> datetime : has-a
+
+@enduml

@@ -1,0 +1,31 @@
+@startuml
+
+class Date {
+  - year : int
+  - month : int
+  - day : int
+  - date : datetime
+  + __init__(year, month, day)
+  + __str__() : str
+  + __add__(days) : Date
+  + __sub__(days) : Date
+  + __eq__(other) : bool
+  + __lt__(other) : bool
+  + from_string(date_string) : Date
+  + save(filename)
+  + load(filename)
+}
+
+class DateCollection {
+  - dates : list
+  + add(date)
+  + remove(index)
+  + __getitem__(key) : Date
+  + __str__() : str
+  + save(filename)
+  + load(filename)
+}
+
+Date "0..*" -- "1" DateCollection : contains >
+
+@enduml

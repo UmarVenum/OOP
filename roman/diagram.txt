@@ -1,0 +1,18 @@
+@startuml
+
+class RomanNumber {
+    - value : int
+    - roman : string
+    __
+    + __init__(value)
+    + __str__() : string
+    + __repr__() : string
+    + __add__(other) : RomanNumber
+    + __sub__(other) : RomanNumber
+    + __mul__(other) : RomanNumber
+    + __truediv__(other) : RomanNumber
+    - _to_roman(num : int) : string
+    - _to_arabic(rom : string) : int
+}
+
+@enduml

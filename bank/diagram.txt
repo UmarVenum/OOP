@@ -1,0 +1,33 @@
+@startuml
+
+class MoneyTransfer {
+    + MoneyTransfer(amount: int)
+    {abstract} + make_transfer(): str
+}
+
+class BankTransfer {
+    + make_transfer(): str
+}
+
+class CurrencyTransfer {
+    - currency: str
+    + CurrencyTransfer(amount: int, currency: str)
+    + make_transfer(): str
+}
+
+class PostalTransfer {
+    + make_transfer(): str
+}
+
+class PaymentPlatformTransfer {
+    - platform: str
+    + PaymentPlatformTransfer(amount: int, platform: str)
+    + make_transfer(): str
+}
+
+MoneyTransfer <|-- BankTransfer
+MoneyTransfer <|-- CurrencyTransfer
+MoneyTransfer <|-- PostalTransfer
+MoneyTransfer <|-- PaymentPlatformTransfer
+
+@enduml

@@ -1,0 +1,39 @@
+@startuml
+
+abstract class ProfitStrategy {
+  +calculate_profit(amount: float, rate: float, period: int): float
+}
+
+class FixedProfitStrategy {
+  +calculate_profit(amount: float, rate: float, period: int): float
+}
+
+class BonusProfitStrategy {
+  -bonus_threshold: float
+  -bonus_rate: float
+  +calculate_profit(amount: float, rate: float, period: int): float
+}
+
+class CapitalizationProfitStrategy {
+  +calculate_profit(amount: float, rate: float, period: int): float
+}
+
+class Deposit {
+  -amount: float
+  -rate: float
+  -period: int
+  -strategy: ProfitStrategy
+  +calculate_profit(): float
+  +__init__(amount: float, rate: float, period: int, strategy: ProfitStrategy)
+}
+
+class DepositAdvisor {
+  +advise(amount: float, period: int): Deposit
+}
+
+ProfitStrategy <|-- FixedProfitStrategy
+ProfitStrategy <|-- BonusProfitStrategy
+ProfitStrategy <|-- CapitalizationProfitStrategy
+Deposit --|> ProfitStrategy
+
+@enduml
